@@ -12,23 +12,23 @@ import bs4
 def build_vector_db():
     print("Scraping Debales AI website...")
     
-    # 1. Define the target URLs (Update these with the actual Debales URLs)
+    # 1. Define the target URLs 
     urls = [
-        "https://debales.ai/", # Example Home
-        "https://debales.ai/logistics", # Example solution/logistics
-        "https://debales.ai/ecommerce", # Example solution/ecommerce
-        "https://debales.ai/integrations", # Example integrations
-        "https://debales.ai/ai-agent" # Example ai-agent
-        "https://debales.ai/book-demo" # Example book demo
-        "https://debales.ai/blog" # Example blog
-        "https://debales.ai/case-studies" # Example case studies
-        "https://debales.ai/#faq" # Example faq
-        "https://debales.ai/case-study/email-ai-agentq" # Example email ai agent
-        "https://debales.ai/case-study/whatsapp-ai-agent" # Example whatsapp ai agent
-        "https://debales.ai/case-study/voice-ai-agent" # Example voice ai agent
-        "https://debales.ai/case-study/warehouse-ai-agent" # Example warehouse ai agent
-        "https://debales.ai/case-studies/debales-ai-cuts-customer-support-requests-for-blossom-and-rhyme" # Example ai agent
-        "https://debales.ai/case-studies/debales-ai-turns-conversations-into-conversions-for-hellogtk" # Example ai agent
+        "https://debales.ai/", # Home
+        "https://debales.ai/logistics", #  solution/logistics
+        "https://debales.ai/ecommerce", #  solution/ecommerce
+        "https://debales.ai/integrations", #  integrations
+        "https://debales.ai/ai-agent" #  ai-agent
+        "https://debales.ai/book-demo" #  book demo
+        "https://debales.ai/blog" #  blog
+        "https://debales.ai/case-studies" #  case studies
+        "https://debales.ai/#faq" #  faq
+        "https://debales.ai/case-study/email-ai-agentq" #  email ai agent
+        "https://debales.ai/case-study/whatsapp-ai-agent" #  whatsapp ai agent
+        "https://debales.ai/case-study/voice-ai-agent" #  voice ai agent
+        "https://debales.ai/case-study/warehouse-ai-agent" #  warehouse ai agent
+        "https://debales.ai/case-studies/debales-ai-cuts-customer-support-requests-for-blossom-and-rhyme" # ai agent
+        "https://debales.ai/case-studies/debales-ai-turns-conversations-into-conversions-for-hellogtk" #  ai agent
 
 
     ]
