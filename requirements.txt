@@ -1,0 +1,10 @@
+langchain
+langchain-groq
+langgraph
+langchain-chroma
+beautifulsoup4
+langchain-tavily
+python-dotenv
+pydantic
+langchain-huggingface
+sentence-transformers
