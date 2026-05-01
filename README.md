@@ -42,19 +42,19 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-**2. Configure API Keys
+**2. Configure API Keys**
 ### Rename the .env.example file to .env and insert your API keys:
 ```Plaintext
 GROQ_API_KEY="your_groq_api_key_here"
 TAVILY_API_KEY="your_tavily_api_key_here"
 ```
-**3. Build the Knowledge Base
+**3. Build the Knowledge Base**
 ### Run the scraper to initialize your local vector database:
 
 ```bash
 python knowledge_base.py
 ```
-**4. Run the Agent
+**4. Run the Agent**
 Start the interactive CLI:
 
 ```bash
