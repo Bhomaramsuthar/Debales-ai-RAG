@@ -30,20 +30,24 @@ The final `generator_node` synthesizes the retrieved context and operates under 
 ## 🚀 Setup & Installation Instructions
 
 **1. Clone and set up the environment**
-```bash
 # Create a virtual environment
+```bash
 python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+source venv/bin/activate  
+# On Windows use `venv\Scripts\activate`
+```
 
 # Install dependencies
+```bash
 pip install -r requirements.txt
+```
 
 **2. Configure API Keys
 Rename the .env.example file to .env and insert your API keys:
-
-Plaintext
+```Plaintext
 GROQ_API_KEY="your_groq_api_key_here"
 TAVILY_API_KEY="your_tavily_api_key_here"
+```
 **3. Build the Knowledge Base
 Run the scraper to initialize your local vector database:
 
