@@ -30,42 +30,43 @@ The final `generator_node` synthesizes the retrieved context and operates under 
 ## 🚀 Setup & Installation Instructions
 
 **1. Clone and set up the environment**
-# Create a virtual environment
+### Create a virtual environment
 ```bash
 python -m venv venv
 source venv/bin/activate  
 # On Windows use `venv\Scripts\activate`
 ```
 
-# Install dependencies
+### Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
 **2. Configure API Keys
-Rename the .env.example file to .env and insert your API keys:
+### Rename the .env.example file to .env and insert your API keys:
 ```Plaintext
 GROQ_API_KEY="your_groq_api_key_here"
 TAVILY_API_KEY="your_tavily_api_key_here"
 ```
 **3. Build the Knowledge Base
-Run the scraper to initialize your local vector database:
+### Run the scraper to initialize your local vector database:
 
-Bash
+```bash
 python knowledge_base.py
+```
 **4. Run the Agent
 Start the interactive CLI:
 
-Bash
+```bash
 python main.py
-
-##🧪 Evaluation Prompts to Test
+```
+## 🧪 Evaluation Prompts to Test
 Once the CLI is running, try these exact prompts to see the LangGraph router in action:
 
-Test 1 (RAG Route): "What is Debales AI?"
+- Test 1 (RAG Route): "What is Debales AI?"
 
-Test 2 (SERP Route): "What is the capital of Japan?"
+- Test 2 (SERP Route): "What is the capital of Japan?"
 
-Test 3 (Mixed/Parallel Route): "Compare Debales AI to OpenAI."
+- Test 3 (Mixed/Parallel Route): "Compare Debales AI to OpenAI."
 
-Test 4 (Anti-Hallucination/Unknown): "asdfghjkl"
+- Test 4 (Anti-Hallucination/Unknown): "asdfghjkl"
