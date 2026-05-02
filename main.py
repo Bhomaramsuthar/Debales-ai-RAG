@@ -38,10 +38,10 @@ def router_node(state: AgentState):
     user_query = state["messages"][-1].content
     system_prompt = f"""
     You are a routing assistant for Debales AI. Analyze the user query.
-    - If the query is about 'Debales', 'Debales AI', their products, or blogs: output 'rag'.
-    - If the query is a general question (e.g., weather, history, coding help): output 'serp'.
-    - If the query asks to compare Debales AI to something else on the web: output 'both'.
-    - If the query is total gibberish or unanswerable: output 'unknown'.
+    - If the query is about 'Debales', 'warehouse AI', OR uses pronouns referring to the company like 'you', 'your services', 'your company', or 'where are you located': output 'rag'.
+    - If the query is a general question clearly unrelated to Debales (e.g., weather, history, capital cities): output 'serp'.
+    - If the query asks to compare Debales AI to something else: output 'both'.
+    - If the query is total gibberish: output 'unknown'.
     
     User Query: {user_query}
     """
@@ -61,25 +61,24 @@ def serp_node(state: AgentState):
     return {"context": f"\n\n[WEB SEARCH RESULTS]:\n{context}"}
 
 def generator_node(state: AgentState):
-    """Generates the final hallucination-free response."""
+    """Generates the final hallucination-free response with a human persona."""
     user_query = state["messages"][-1].content
     context = state.get("context", "")
     route = state.get("route", "unknown")
     
-    # Handle the "Unknown" edge case immediately to prevent hallucination
+    # Handle the "Unknown" edge case
     if route == "unknown":
-        return {"messages": [AIMessage(content="I'm sorry, I don't understand your question or it is out of my scope.")]}
-    
-    # DEBUG: This will print in your terminal so you know the data arrived!
-    print(f"\n   [DEBUG] Context loaded into Generator: {len(context)} characters")
+        return {"messages": [AIMessage(content="I'm sorry, I didn't quite catch that. Could you rephrase your question?")]}
         
-    system_prompt = f"""You are a helpful assistant for Debales AI. 
-    Answer the user's query based ONLY on the provided Context below. 
-    
-    Rules:
-    - If the user asks what Debales AI is, summarize the features, partnerships, or services mentioned in the Context to explain what they do.
-    - If the context is completely empty or contains no relevant information at all, say "I don't have enough information to answer that." 
-    - Do not guess or hallucinate outside of the Context.
+    system_prompt = f"""You are Alex, a friendly, professional, and highly knowledgeable Customer Success Manager at Debales AI. 
+
+    Your goal is to answer the user's question accurately using ONLY the information in the provided Context. 
+
+    CRITICAL RULES:
+    1. Adopt the Persona: Speak as if you genuinely work at Debales AI. Use inclusive language like "we", "our team", and "our products".
+    2. Forbidden Phrases: You must NEVER say "Based on the context", "According to the sources", "The provided text says", or anything similar. Just answer the question naturally.
+    3. Formatting: Be concise but warm. Use bullet points if listing multiple items or services.
+    4. Unknowns: If the exact answer is NOT in the Context, politely say something like "I don't have that specific information handy right now, but I'd be happy to connect you with our human support team." Do NOT guess, hallucinate, or make up links.
     
     Context:
     {context}
@@ -91,7 +90,6 @@ def generator_node(state: AgentState):
     ])
     
     return {"messages": [response]}
-
 
 # --- CONDITIONAL ROUTING LOGIC ---
 
